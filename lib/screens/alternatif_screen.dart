@@ -14,36 +14,38 @@ class _AlternatifScreenState extends State<AlternatifScreen> {
   @override
   void initState() {
     super.initState();
-    alternatifControllers.add(
-      AlternatifControllers(
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController(),
-      ),
-    );
-    alternatifControllers.add(
-      AlternatifControllers(
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController(),
-        TextEditingController(),
-      ),
-    );
+    if (alternatifControllers.isEmpty) {
+      alternatifControllers.add(
+        AlternatifControllers(
+          TextEditingController(),
+          TextEditingController(),
+          TextEditingController(),
+          TextEditingController(),
+          TextEditingController(),
+          TextEditingController(),
+          TextEditingController(),
+          TextEditingController(),
+          TextEditingController(),
+          TextEditingController(),
+          TextEditingController(),
+        ),
+      );
+      alternatifControllers.add(
+        AlternatifControllers(
+          TextEditingController(),
+          TextEditingController(),
+          TextEditingController(),
+          TextEditingController(),
+          TextEditingController(),
+          TextEditingController(),
+          TextEditingController(),
+          TextEditingController(),
+          TextEditingController(),
+          TextEditingController(),
+          TextEditingController(),
+        ),
+      );
+    }
   }
 
   @override
