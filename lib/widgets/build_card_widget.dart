@@ -2,6 +2,7 @@ import 'package:ahp_voli/utils/alternatif_controller.dart';
 import 'package:ahp_voli/widgets/textfield/textfield_k1_widget.dart';
 import 'package:flutter/material.dart';
 
+import 'textfield/textfield_k0_widget.dart';
 import 'textfield/textfield_k10_widget.dart';
 import 'textfield/textfield_k2_widget.dart';
 import 'textfield/textfield_k3_widget.dart';
@@ -36,17 +37,35 @@ class _BuildCardWidgetState extends State<BuildCardWidget> {
         child: Column(
           children: <Widget>[
             InkWell(
-                onTap: () {
-                  setState(() {
-                    isVisible = !isVisible;
-                  });
-                },
-                child: const Text('Alternatif')),
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () {
+                setState(() {
+                  isVisible = !isVisible;
+                });
+              },
+              child:
+                  // Expanded(
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //     children: const [
+                  const Padding(
+                padding: EdgeInsets.only(bottom: 5, top: 5),
+                child: Text('NILAI ALTERNATIF'),
+              ),
+              //   ],
+              // ),
+              // ),
+            ),
             const SizedBox(height: 3.0),
             Visibility(
               visible: isVisible,
               child: Column(
                 children: [
+                  BuildK0Widget(
+                    controller: widget.controllers.nama,
+                  ),
+                  const SizedBox(height: 10.0),
                   BuildK1Widget(
                     controller: widget.controllers.k1,
                   ),

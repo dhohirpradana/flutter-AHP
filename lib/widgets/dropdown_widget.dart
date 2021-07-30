@@ -1,3 +1,4 @@
+import 'package:ahp_voli/utils/ahp/dropdown_list.dart';
 import 'package:ahp_voli/utils/ahp/tabel_perbandingan_list.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class DropdownWidget extends StatefulWidget {
 class _DropdownWidgetState extends State<DropdownWidget> {
   @override
   Widget build(BuildContext context) {
-    final int index = tabelPerbandinganList[widget.c];
+    final int index = dropdownList[widget.c];
     return DropdownButton(
         value: index,
         items: const [
@@ -55,6 +56,7 @@ class _DropdownWidgetState extends State<DropdownWidget> {
         ],
         onChanged: (int? value) {
           setState(() {
+            dropdownList[widget.c] = value;
             tabelPerbandinganList[widget.c] = value;
             tabelPerbandinganList[widget.c + 9] = 1 / value!;
           });

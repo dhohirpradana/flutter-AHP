@@ -1,14 +1,9 @@
 import 'package:ahp_voli/screens/foundation_sreen.dart';
-import 'package:ahp_voli/utils/provider/page_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => PageModel(),
-      child: const MyApp(),
-    ),
+    const MyApp(),
   );
 }
 
