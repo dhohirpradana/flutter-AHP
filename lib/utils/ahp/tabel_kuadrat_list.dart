@@ -37,6 +37,6 @@ List tabelKuadratList3 = [
   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, //10
 ];
 
-List tabelKuadratTestList = [1, 1, 1, 1, 1, 1, 1, 1, 1];
-List tabelKuadratTestList2 = [1, 1, 1, 1, 1, 1, 1, 1, 1];
-List tabelKuadratTestList3 = [1, 1, 1, 1, 1, 1, 1, 1, 1];
+// List tabelKuadratTestList = [1, 1, 1, 1, 1, 1, 1, 1, 1];
+// List tabelKuadratTestList2 = [1, 1, 1, 1, 1, 1, 1, 1, 1];
+// List tabelKuadratTestList3 = [1, 1, 1, 1, 1, 1, 1, 1, 1];

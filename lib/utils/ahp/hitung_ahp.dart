@@ -242,30 +242,33 @@ class AHP {
         bobot10,
       ));
     }
-    finalResult();
+    finalResult(bobotAlternatifList);
   }
 
-  static finalResult() {
+  static finalResult(List list) {
     finalResultList.clear();
     for (var i = 0; i < alternatifControllers.length; i++) {
-      final double res1 = bobotAlternatifList[i].ba1 * eigenVectorList[i];
-      final double res2 = bobotAlternatifList[i].ba2 * eigenVectorList[i];
-      final double res3 = bobotAlternatifList[i].ba3 * eigenVectorList[i];
-      final double res4 = bobotAlternatifList[i].ba4 * eigenVectorList[i];
-      final double res5 = bobotAlternatifList[i].ba5 * eigenVectorList[i];
-      final double res6 = bobotAlternatifList[i].ba6 * eigenVectorList[i];
-      final double res7 = bobotAlternatifList[i].ba7 * eigenVectorList[i];
-      final double res8 = bobotAlternatifList[i].ba8 * eigenVectorList[i];
-      final double res9 = bobotAlternatifList[i].ba9 * eigenVectorList[i];
-      final double res10 = bobotAlternatifList[i].ba10 * eigenVectorList[i];
+      final double res1 = list[i].ba1 * eigenVectorList[0];
+      final double res2 = list[i].ba2 * eigenVectorList[1];
+      final double res3 = list[i].ba3 * eigenVectorList[2];
+      final double res4 = list[i].ba4 * eigenVectorList[3];
+      final double res5 = list[i].ba5 * eigenVectorList[4];
+      final double res6 = list[i].ba6 * eigenVectorList[5];
+      final double res7 = list[i].ba7 * eigenVectorList[6];
+      final double res8 = list[i].ba8 * eigenVectorList[7];
+      final double res9 = list[i].ba9 * eigenVectorList[8];
+      final double res10 = list[i].ba10 * eigenVectorList[9];
       final double nilai =
           res1 + res2 + res3 + res4 + res5 + res6 + res7 + res8 + res9 + res10;
-      finalResultList.add(FinalResult(
-          // alternatifControllers[i].nama.text,
-          nilai));
+      finalResultList
+          .add(FinalResult(alternatifControllers[i].nama.text, nilai));
+      finalResultList.sort((a, b) => a.nilai.compareTo(b.nilai));
     }
     // print(alternatifControllers[0].nama.text);
-    print(finalResultList[0].nilai);
-    print(finalResultList[1].nilai);
+    // print(eigenVectorList);
+    // print(alternatifControllers[0].k1.text);
+    // print(alternatifControllers[1].k1.text);
+    // print(finalResultList[0].nilai);
+    // print(finalResultList[1].nilai);
   }
 }

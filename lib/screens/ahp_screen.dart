@@ -20,20 +20,28 @@ class _AHPScreenState extends State<AHPScreen> {
           if (snapshot.connectionState == ConnectionState.done) {
             return Padding(
               padding: const EdgeInsets.all(15.0),
-              child: Center(
-                child: Column(
-                  children: [
-                    for (var i = 0; i < alternatifControllers.length; i++)
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text((alternatifControllers[i].nama.text == '')
-                              ? 'No Name'
-                              : alternatifControllers[i].nama.text),
-                          Text(finalResultList[i].nilai.toString()),
-                        ],
-                      )
-                  ],
+              child: Scrollbar(
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      for (var i = 0; i < alternatifControllers.length; i++)
+                        Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text((finalResultList[i].nama == '')
+                                    ? 'No Name'
+                                    : finalResultList[i].nama),
+                                Text(finalResultList[i].nilai.toString()),
+                              ],
+                            ),
+                          ),
+                        )
+                    ],
+                  ),
                 ),
               ),
             );

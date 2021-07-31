@@ -1,4 +1,5 @@
 import 'package:ahp_voli/utils/ahp/tabel_perbandingan_list.dart';
+import 'package:ahp_voli/utils/criteria_is_swab.dart';
 import 'package:ahp_voli/utils/criteria_name_list.dart';
 import 'package:ahp_voli/widgets/dropdown_widget.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,6 @@ class PerbandinganWidget extends StatefulWidget {
 
 class _PerbandinganWidgetState extends State<PerbandinganWidget> {
   late final DropdownWidget dropdownWidget;
-  bool stateSwitch = false;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -30,7 +30,7 @@ class _PerbandinganWidgetState extends State<PerbandinganWidget> {
               tabelPerbandinganList[widget.c] = b;
               tabelPerbandinganList[widget.c + 9] = a;
               setState(() {
-                stateSwitch = !stateSwitch;
+                criteriaIsSwab[widget.c] = !criteriaIsSwab[widget.c];
               });
             },
             child: const Icon(Icons.switch_left_rounded)),
@@ -39,7 +39,7 @@ class _PerbandinganWidgetState extends State<PerbandinganWidget> {
             padding: const EdgeInsets.all(10.0),
             child: SizedBox(
                 width: MediaQuery.of(context).size.width / 4,
-                child: Text((stateSwitch == false)
+                child: Text((criteriaIsSwab[widget.c] == false)
                     ? criteriaNameList[widget.i - 1]
                     : criteriaNameList[widget.ii - 1])),
           ),
@@ -53,7 +53,7 @@ class _PerbandinganWidgetState extends State<PerbandinganWidget> {
             padding: const EdgeInsets.all(10.0),
             child: SizedBox(
                 width: MediaQuery.of(context).size.width / 4,
-                child: Text((stateSwitch == false)
+                child: Text((criteriaIsSwab[widget.c] == false)
                     ? criteriaNameList[widget.ii - 1]
                     : criteriaNameList[widget.i - 1])),
           ),
