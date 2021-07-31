@@ -262,7 +262,7 @@ class AHP {
           res1 + res2 + res3 + res4 + res5 + res6 + res7 + res8 + res9 + res10;
       finalResultList
           .add(FinalResult(alternatifControllers[i].nama.text, nilai));
-      finalResultList.sort((a, b) => a.nilai.compareTo(b.nilai));
+      finalResultList.sort((a, b) => b.nilai.compareTo(a.nilai));
     }
     // print(alternatifControllers[0].nama.text);
     // print(eigenVectorList);
