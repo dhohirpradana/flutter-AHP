@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:ahp_voli/utils/ahp/alternatif_controller.dart';
 import 'package:ahp_voli/utils/ahp/bobot_alternatif_list.dart';
 import 'package:ahp_voli/utils/ahp/bobot_alternatif_model.dart';
+import 'package:ahp_voli/utils/ahp/cm_list.dart';
 import 'package:ahp_voli/utils/ahp/final_result_list.dart';
 import 'package:ahp_voli/utils/ahp/final_result_model.dart';
 import 'package:ahp_voli/utils/ahp/tabel_kuadrat_list.dart';
@@ -182,18 +183,8 @@ class AHP {
       sumK9 += (element.k9.text == '') ? 0 : int.parse(element.k9.text);
       sumK10 += (element.k10.text == '') ? 0 : int.parse(element.k10.text);
     }
-    final length = alternatifControllers.length;
-    final av1 = (sumK1 == 0) ? 0 : sumK1 / length;
-    final av2 = (sumK2 == 0) ? 0 : sumK2 / length;
-    final av3 = (sumK3 == 0) ? 0 : sumK3 / length;
-    final av4 = (sumK4 == 0) ? 0 : sumK4 / length;
-    final av5 = (sumK5 == 0) ? 0 : sumK5 / length;
-    final av6 = (sumK6 == 0) ? 0 : sumK6 / length;
-    final av7 = (sumK7 == 0) ? 0 : sumK7 / length;
-    final av8 = (sumK8 == 0) ? 0 : sumK8 / length;
-    final av9 = (sumK9 == 0) ? 0 : sumK9 / length;
-    final av10 = (sumK10 == 0) ? 0 : sumK10 / length;
-    bobotAlternatif(av1, av2, av3, av4, av5, av6, av7, av8, av9, av10);
+    bobotAlternatif(
+        sumK1, sumK2, sumK3, sumK4, sumK5, sumK6, sumK7, sumK8, sumK9, sumK10);
   }
 
   static bobotAlternatif(av1, av2, av3, av4, av5, av6, av7, av8, av9, av10) {
@@ -264,11 +255,32 @@ class AHP {
           .add(FinalResult(alternatifControllers[i].nama.text, nilai));
       finalResultList.sort((a, b) => b.nilai.compareTo(a.nilai));
     }
-    // print(alternatifControllers[0].nama.text);
-    // print(eigenVectorList);
-    // print(alternatifControllers[0].k1.text);
-    // print(alternatifControllers[1].k1.text);
-    // print(finalResultList[0].nilai);
-    // print(finalResultList[1].nilai);
+    cm();
+  }
+
+  static cm() {
+    final length = tabelPerbandinganList.length;
+    final int sumK = sqrt(length).toInt();
+    double cmSum = 0;
+    cmList.clear();
+    for (var index = 0; index < length; index += sumK) {
+      cmSum = 0;
+      for (var i = 0; i < sumK; i++) {
+        cmSum += tabelPerbandinganList[index + i] * eigenVectorList[i];
+      }
+      cmList.add(cmSum);
+    }
+  }
+
+  static Future<bool> ci() async {
+    double csum = 0;
+    const sumK = 10;
+    for (var element in cmList) {
+      csum += element;
+    }
+    final a = (csum / sumK) / (sumK - 1);
+    const double ri = 1.46;
+    final bool isConsistent = (a / ri < 0.1) ? true : false;
+    return isConsistent;
   }
 }

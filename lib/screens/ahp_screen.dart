@@ -19,12 +19,39 @@ class _AHPScreenState extends State<AHPScreen> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             return Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.fromLTRB(15.0, 7.5, 15.0, 15.0),
               child: Scrollbar(
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
+                      FutureBuilder(
+                          future: AHP.ci(),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              final data = snapshot.data;
+                              return Card(
+                                color: (data == true)
+                                    ? Colors.green.withOpacity(0.7)
+                                    : Colors.red.withOpacity(0.7),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15.0),
+                                  child: Expanded(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text((data == true)
+                                            ? 'NILAI KRITERIA KONSISTEN'
+                                            : 'NILAI KRITERIA TIDAK KONSISTEN'),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }
+                            return const SizedBox();
+                          }),
                       for (var i = 0; i < alternatifControllers.length; i++)
                         Card(
                           child: Padding(

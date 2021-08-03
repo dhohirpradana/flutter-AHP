@@ -33,7 +33,9 @@ class _PerbandinganWidgetState extends State<PerbandinganWidget> {
                 criteriaIsSwab[widget.c] = !criteriaIsSwab[widget.c];
               });
             },
-            child: const Icon(Icons.switch_left_rounded)),
+            child: Icon(((criteriaIsSwab[widget.c] == false)
+                ? Icons.switch_right_rounded
+                : Icons.switch_left_rounded))),
         Card(
           child: Padding(
             padding: const EdgeInsets.all(10.0),
@@ -46,7 +48,10 @@ class _PerbandinganWidgetState extends State<PerbandinganWidget> {
         ),
         Padding(
           padding: const EdgeInsets.all(5.0),
-          child: DropdownWidget(c: widget.c),
+          child: DropdownWidget(
+            c: widget.c,
+            isSwape: criteriaIsSwab[widget.c],
+          ),
         ),
         Card(
           child: Padding(

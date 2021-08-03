@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 
 class DropdownWidget extends StatefulWidget {
   final int c;
-  const DropdownWidget({Key? key, required this.c}) : super(key: key);
+  final bool isSwape;
+  const DropdownWidget({Key? key, required this.c, required this.isSwape})
+      : super(key: key);
 
   @override
   _DropdownWidgetState createState() => _DropdownWidgetState();
@@ -55,11 +57,17 @@ class _DropdownWidgetState extends State<DropdownWidget> {
           )
         ],
         onChanged: (int? value) {
-          setState(() {
-            dropdownList[widget.c] = value;
-            tabelPerbandinganList[widget.c] = value;
-            tabelPerbandinganList[widget.c + 9] = 1 / value!;
-          });
+          (widget.isSwape == false)
+              ? setState(() {
+                  dropdownList[widget.c] = value;
+                  tabelPerbandinganList[widget.c] = value;
+                  tabelPerbandinganList[widget.c + 9] = 1 / value!;
+                })
+              : setState(() {
+                  dropdownList[widget.c] = value;
+                  tabelPerbandinganList[widget.c + 9] = value;
+                  tabelPerbandinganList[widget.c] = 1 / value!;
+                });
         },
         hint: const Text("Nilai perbandingan"));
   }

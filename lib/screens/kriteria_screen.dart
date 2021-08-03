@@ -1,3 +1,4 @@
+import 'package:ahp_voli/utils/ahp/hitung_ahp.dart';
 import 'package:ahp_voli/widgets/editable_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,9 @@ class _KriteriaScreenState extends State<KriteriaScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-        body: Padding(padding: EdgeInsets.all(15.0), child: EditableWidget()));
+        body: Padding(
+      padding: EdgeInsets.all(15.0),
+      child: EditableWidget(),
+    ));
   }
 }
